@@ -11,8 +11,7 @@
 }
 
 .wrapper > *{
-    width: 300px;
-
+    width: 30%;
 }
 
 .logo-text{
@@ -38,7 +37,33 @@
     color: var(--light);
     text-decoration: none;
     display: block;
+    text-align: center;
+
+    font-size: 1.2rem;
+
+    padding-right: 1px;
+    padding-bottom: 4px;
+
     position: relative;
+}
+
+.menu > ul > li > a::after{
+    content: '';
+    width: 0%;
+    height: 4px;
+    border-radius: 5px;
+
+    background-color: var(--light);
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    transition: 300ms ease;
+}
+
+.menu > ul > li > a:hover::after{
+    width: 100%;
 }
 
 .profile{

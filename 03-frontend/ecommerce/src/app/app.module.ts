@@ -9,13 +9,15 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductService } from './service/product-service.service';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { TopMenuComponent } from './components/top-menu/top-menu.component';
+import { ShopFilterComponent } from './components/shop-filter/shop-filter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
     HomePageComponent,
-    TopMenuComponent
+    TopMenuComponent,
+    ShopFilterComponent
   ],
   imports: [
     BrowserModule,

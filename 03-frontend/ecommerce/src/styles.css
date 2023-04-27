@@ -2,6 +2,7 @@
     --green: #6D9886;
     --dark: #393E46;
     --light: #F7F7F7;
+    --grey: #dddddd;
     --filter-white: brightness(0) invert(1);
 }
 

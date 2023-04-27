@@ -1,3 +1,132 @@
-img{
-    width: 25px;
+.wrapper{
+    width: 100%;
+    padding: 0 10%;
+    padding-bottom: 100px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(17rem,100%), 1fr));
+    gap: 50px;
+}
+
+.produto{
+    --_panel-padding: 1.4rem;
+    --_radius: 5px;
+    height: 400px;
+    position: relative;
+    color: white;
+    padding: var(--_panel-padding);
+    border-radius: var(--_radius);
+
+    overflow: hidden;
+}
+
+.bg-img{
+    width: 100%;
+    display: block;
+
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    filter: brightness(0.4);
+
+    z-index: -1;
+    border-radius: var(--_radius);
+
+    transition: 300ms ease;
+
+}
+
+.content{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(55%);
+
+
+    transition: 300ms ease;
+    transition-delay: 300ms;
+}
+
+.content > h3{
+    font-size: 1.6rem;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    width: max-content;
+    position: relative;
+}
+
+.content > h3::after{
+    content: '';
+    /* width: calc(100% + var(--_panel-padding)); */
+    width: 0px;
+    height: 4px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: var(--green);
+
+    position: absolute;
+    bottom: 0;
+    left: calc(var(--_panel-padding) * -1);
+
+    transition: 300ms ease;
+}
+
+.produto:hover .content > h3::after{
+    width: calc(100% + var(--_panel-padding));
+}
+
+.produto:hover > .content{
+    transform: translateY(0);
+}
+
+.produto:hover > .bg-img{
+    transform: scale(1.1);
+    border-radius: 20px;
+}
+
+.bottom{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+
+    padding-right: calc(var(--_panel-padding) * 2);
+}
+
+.buttons > a, .buttons > a > img{
+    display: block;
+}
+
+.buttons > a{
+    background-color: black;
+    margin-left: 5px;
+    padding: 10px;
+    border-radius: 100px;
+}
+
+.buttons > a > img{
+    width: 20px;
+    filter: var(--filter-white);
+}
+
+.add{
+    background-color: var(--dark) !important;
+}
+
+.arrow{
+    background-color: var(--green) !important;
 }

@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
 
-    padding: 40px 10%;
+    padding: 100px 10%;
 }
 
 .filters > ul > li{
@@ -49,4 +49,43 @@
 .search img{
     width: 25px;
     filter: invert(48%) sepia(0%) saturate(456%) hue-rotate(220deg) brightness(88%) contrast(88%);
+}
+
+.filters > ul > li > a{
+    color: black;
+    text-decoration: none;
+
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.link-ativo{
+    color: var(--green) !important;
+}
+
+
+.link-ativo::after{
+    content: '';
+    width: 100%;
+    height: 4px;
+    border-radius: 5px;
+    background-color: var(--green);
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    animation: open 300ms;
+    transition: 300ms ease;
+
+    z-index: -1;
+}
+
+@keyframes open{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+    }
 }

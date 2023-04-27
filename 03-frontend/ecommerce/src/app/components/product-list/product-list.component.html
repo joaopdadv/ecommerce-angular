@@ -1,10 +1,15 @@
 <div class="wrapper">
     <div class="produto" *ngFor="let produto of products">
-        <h3>{{produto.name}}</h3>
-        <div class="bottom">
-            <p>{{produto.unitPrice}}</p>
-            <a href=""><img src="../../assets/add.svg" alt=""></a>
-            <a href=""><img src="../../assets/arrow.svg" alt=""></a>
+        <img src={{produto.imageUrl}} alt="" class="bg-img">
+        <div class="content">
+            <h3>{{produto.name}}</h3>
+            <div class="bottom">
+                <p>R$ {{produto.unitPrice}}</p>
+                <div class="buttons">
+                    <a href="" class="add"><img src="../../assets/add.svg" alt=""></a>
+                    <a href="" class="arrow"><img src="../../assets/arrow.svg" alt=""></a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

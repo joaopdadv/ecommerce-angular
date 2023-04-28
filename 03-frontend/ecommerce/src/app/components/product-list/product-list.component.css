@@ -5,7 +5,7 @@
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(17rem,100%), 1fr));
-    gap: 50px;
+    gap: 20px;
 }
 
 .produto{

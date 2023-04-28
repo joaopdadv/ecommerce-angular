@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProductCategory } from 'src/app/common/product-category';
 import { ProductService } from 'src/app/service/product-service.service';
 
 @Component({
@@ -8,9 +9,17 @@ import { ProductService } from 'src/app/service/product-service.service';
   styleUrls: ['./shop-filter.component.css']
 })
 export class ShopFilterComponent implements OnInit{
-  
-  constructor(){}
 
-  ngOnInit(): void {}
+  categories: ProductCategory[] = [];
+
+  constructor(private produtoService: ProductService){}
+
+  ngOnInit(): void {
+    this.produtoService.getProductCategoryList().subscribe(
+      data => {
+        this.categories = data;
+      }
+    )
+  }
 
 }

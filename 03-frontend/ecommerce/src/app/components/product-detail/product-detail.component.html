@@ -1,0 +1,21 @@
+<div class="wrapper">
+    <a routerLink="home">< Voltar</a>
+    <div class="content">
+        <div class="image">
+            <img src={{produto.imageUrl}} alt="">
+        </div>
+        <div class="texts">
+            <div class="top">
+                <h2 class="name">{{produto.name}}</h2>
+                <p class="descricao">{{produto.description}}</p>
+                <h3 class="price">R$ <span>{{produto.unitPrice}}</span></h3>
+            </div>
+            <div class="bottom">
+                <div class="add-cart">
+                    <div class="button">+</div>
+                    <p>Adicionar ao carrinho</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

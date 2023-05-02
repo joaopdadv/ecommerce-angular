@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ProductCategory } from 'src/app/common/product-category';
 import { ProductService } from 'src/app/service/product-service.service';
 

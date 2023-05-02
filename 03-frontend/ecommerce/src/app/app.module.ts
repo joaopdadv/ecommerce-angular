@@ -10,6 +10,7 @@ import { ProductService } from './service/product-service.service';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { TopMenuComponent } from './components/top-menu/top-menu.component';
 import { ShopFilterComponent } from './components/shop-filter/shop-filter.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ShopFilterComponent } from './components/shop-filter/shop-filter.compon
     ProductListComponent,
     HomePageComponent,
     TopMenuComponent,
-    ShopFilterComponent
+    ShopFilterComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

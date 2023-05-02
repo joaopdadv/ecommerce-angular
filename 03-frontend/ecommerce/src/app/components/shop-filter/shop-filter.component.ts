@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductCategory } from 'src/app/common/product-category';
 import { ProductService } from 'src/app/service/product-service.service';
 
@@ -11,7 +12,9 @@ export class ShopFilterComponent implements OnInit{
 
   categories: ProductCategory[] = [];
 
-  constructor(private produtoService: ProductService){}
+  @ViewChild('pesquisa') pesquisa!:ElementRef;
+  
+  constructor(private produtoService: ProductService, private router: Router){}
 
   ngOnInit(): void {
     this.produtoService.getProductCategoryList().subscribe(
@@ -21,4 +24,8 @@ export class ShopFilterComponent implements OnInit{
     )
   }
 
+  navigate(){
+    this.router.navigateByUrl(`/pesquisa/${this.pesquisa.nativeElement.value}`);
+  }
+  
 }

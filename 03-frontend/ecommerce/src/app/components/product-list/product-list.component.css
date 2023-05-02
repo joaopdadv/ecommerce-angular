@@ -4,14 +4,14 @@
     padding-bottom: 100px;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(17rem,100%), 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(min(18rem,100%), 1fr));
+    gap: 30px;
 }
 
 .produto{
     --_panel-padding: 1.4rem;
-    --_radius: 5px;
-    height: 400px;
+    --_radius: 15px;
+    height: 330px;
     position: relative;
     color: white;
     padding: var(--_panel-padding);
@@ -51,11 +51,14 @@
 }
 
 .content > h3{
+    width: max-content;
     font-size: 1.6rem;
     padding-bottom: 5px;
     margin-bottom: 20px;
-    width: max-content;
     position: relative;
+
+    white-space: nowrap;
+    text-overflow: ellipsis; 
 }
 
 .content > h3::after{
@@ -129,4 +132,13 @@
 
 .arrow{
     background-color: var(--green) !important;
+}
+
+.vazio{
+    text-align: center;
+}
+
+.vazio > h2{
+    font-weight: 500;
+    font-size: 3rem;
 }

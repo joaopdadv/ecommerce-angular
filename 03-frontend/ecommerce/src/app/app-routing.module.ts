@@ -4,6 +4,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 
 const routes: Routes = [
   {path: 'home', component: HomePageComponent},
+  {path: 'pesquisa/:keyword', component: HomePageComponent},
   {path: 'categoria/:id', component: HomePageComponent},
   {path: 'categoria', component: HomePageComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},

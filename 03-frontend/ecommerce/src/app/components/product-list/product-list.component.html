@@ -2,14 +2,19 @@
     <div class="produto" *ngFor="let produto of products">
         <img src={{produto.imageUrl}} alt="" class="bg-img">
         <div class="content">
-            <h3>{{produto.name}}</h3>
+            <h3>{{produto.name | slice:0:17}}<span *ngIf="produto.name.length > 17">...</span></h3>
             <div class="bottom">
-                <p>R$ {{produto.unitPrice}}</p>
+                <p *ngIf="produto.unitsInStock != 0">R$ {{produto.unitPrice}}</p>
+                <p *ngIf="produto.unitsInStock == 0">Fora de estoque</p>
                 <div class="buttons">
-                    <a href="" class="add"><img src="../../assets/add.svg" alt=""></a>
+                    <a href="" class="add" *ngIf="produto.unitsInStock != 0"><img src="../../assets/add.svg" alt=""></a>
                     <a href="" class="arrow"><img src="../../assets/arrow.svg" alt=""></a>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="vazio" *ngIf="products.length == 0">
+        <h2>Ops... Parece que houve um erro.</h2>
     </div>
 </div>

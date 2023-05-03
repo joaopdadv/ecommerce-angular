@@ -11,6 +11,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { TopMenuComponent } from './components/top-menu/top-menu.component';
 import { ShopFilterComponent } from './components/shop-filter/shop-filter.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     HomePageComponent,
     TopMenuComponent,
     ShopFilterComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

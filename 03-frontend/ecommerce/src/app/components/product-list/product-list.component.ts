@@ -13,6 +13,10 @@ export class ProductListComponent implements OnInit{
   products: Product[] = [];
   categoryId!: number;
   productName!: string;
+
+  pageNumber:number = 0;
+  pageSize: number = 4;
+  totalElements: number = 0;
   
   constructor(private productService: ProductService, private route: ActivatedRoute){}
 
@@ -25,23 +29,41 @@ export class ProductListComponent implements OnInit{
 
   listProducts(){
 
-    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
-    const hasProductName: boolean = this.route.snapshot.paramMap.has('keyword');
+    const searchMode: boolean = this.route.snapshot.paramMap.has('keyword');
 
+
+    if(searchMode){
+     this.handleSearch();
+    }else{
+      this.handleList();
+    }
+
+    console.log(this.products);
+  }
+
+  handleSearch(){
+    this.productName = this.route.snapshot.paramMap.get('keyword')!;
+
+    this.productService.getProductListByName(this.productName).subscribe(
+      data => {
+        this.products = data;
+      }
+    )
+  }
+
+  handleList(){
+    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+
+    console.log(hasCategoryId);
 
     if(hasCategoryId){
       this.categoryId = +this.route.snapshot.paramMap.get('id')!;
-    
-      this.productService.getProductListByCategory(this.categoryId).subscribe(
-        data => {
-          this.products = data;
-        }
-      )
-    }else if(hasProductName){
-      this.productName = this.route.snapshot.paramMap.get('keyword')!;
 
-      this.productService.getProductListByName(this.productName).subscribe(
+      console.log(this.categoryId);
+    
+      this.productService.getProductListByCategoryPaginate(this.pageNumber, this.pageSize, this.categoryId).subscribe(
         data => {
+          console.log(data);
           this.products = data;
         }
       )
@@ -54,8 +76,5 @@ export class ProductListComponent implements OnInit{
         }
       )
     }
-
-    console.log(this.products);
   }
-
 }

@@ -19,17 +19,28 @@
     </div>
 </div>
 
-<ngb-pagination
-  [(page)]="pageNumber"
-  [pageSize]="pageSize"
-  [collectionSize]="totalElements"
-  [maxSize]="5"
-  [boundaryLinks]="false"
-  (pageChange)="listProducts()"></ngb-pagination>
 
-  <select #selectPageSize (change)="updatePageSize(selectPageSize.value)">
-    <option selected="true">5</option>
-    <option>10</option>
-    <option>15</option>
-    <option>20</option>
-  </select>
+<div class="pagination" *ngIf="products.length != 0">
+    <ngb-pagination
+    [(page)]="pageNumber"
+    [pageSize]="pageSize"
+    [collectionSize]="totalElements"
+    [maxSize]="5"
+    [boundaryLinks]="false"
+    (pageChange)="listProducts()"></ngb-pagination>
+
+    <div class="selection">
+
+        <p>
+            Itens por página:
+        </p>
+
+        <select #selectPageSize (change)="updatePageSize(selectPageSize.value)">
+          <option>4</option>
+          <option selected="true">8</option>
+          <option>16</option>
+          <option>24</option>
+        </select>
+    </div>
+  
+</div>

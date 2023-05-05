@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/common/product';
 import { ProductService } from 'src/app/service/product-service.service';
@@ -15,22 +15,24 @@ export class ProductListComponent implements OnInit{
   productName!: string;
 
   pageNumber:number = 1;
-  pageSize: number = 5;
+  pageSize: number = 8;
   totalElements: number = 0;
   
   constructor(private productService: ProductService, private route: ActivatedRoute){}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
+      this.pageNumber = 1;
       this.listProducts();
-    })
-    
+    }) 
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("init");
   }
 
   listProducts(){
-
     const searchMode: boolean = this.route.snapshot.paramMap.has('keyword');
-
 
     if(searchMode){
      this.handleSearch();
@@ -42,11 +44,7 @@ export class ProductListComponent implements OnInit{
   handleSearch(){
     this.productName = this.route.snapshot.paramMap.get('keyword')!;
 
-    this.productService.getProductListByName(this.productName).subscribe(
-      data => {
-        this.products = data;
-      }
-    )
+    this.productService.getProductListByNamePaginate((this.pageNumber - 1), this.pageSize,this.productName).subscribe(this.processData())
   }
 
   handleList(){
@@ -54,21 +52,10 @@ export class ProductListComponent implements OnInit{
 
     if(hasCategoryId){
       this.categoryId = +this.route.snapshot.paramMap.get('id')!;
-
-      console.log(this.categoryId);
     
-      this.productService.getProductListByCategoryPaginate((this.pageNumber - 1), this.pageSize, this.categoryId).subscribe(
-        data => {
-          this.products = data._embedded.products;
-          this.totalElements = data.page.totalElements;
-        }
-      )
+      this.productService.getProductListByCategoryPaginate((this.pageNumber - 1), this.pageSize, this.categoryId).subscribe(this.processData())
     }else{
-      this.productService.getProductListPaginate((this.pageNumber - 1), this.pageSize).subscribe(
-        data => {
-          this.products = data;
-        }
-      )
+      this.productService.getProductListPaginate((this.pageNumber - 1), this.pageSize).subscribe(this.processData())
     }
   }
 
@@ -76,5 +63,12 @@ export class ProductListComponent implements OnInit{
       this.pageSize = +size;
       this.pageNumber = 1;
       this.listProducts();
+  }
+
+  processData(){
+    return (data: any) => {
+      this.products = data._embedded.products;
+      this.totalElements = data.page.totalElements;
+    }
   }
 }

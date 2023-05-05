@@ -22,9 +22,9 @@
 <ngb-pagination
   [(page)]="pageNumber"
   [pageSize]="pageSize"
-  [collectionSize]="25"
+  [collectionSize]="totalElements"
   [maxSize]="5"
-  [boundaryLinks]="true"
+  [boundaryLinks]="false"
   (pageChange)="listProducts()"></ngb-pagination>
 
   <select #selectPageSize (change)="updatePageSize(selectPageSize.value)">

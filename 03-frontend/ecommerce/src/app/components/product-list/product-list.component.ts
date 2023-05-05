@@ -14,7 +14,7 @@ export class ProductListComponent implements OnInit{
   categoryId!: number;
   productName!: string;
 
-  pageNumber:number = 0;
+  pageNumber:number = 1;
   pageSize: number = 5;
   totalElements: number = 0;
   
@@ -57,14 +57,14 @@ export class ProductListComponent implements OnInit{
 
       console.log(this.categoryId);
     
-      this.productService.getProductListByCategoryPaginate(this.pageNumber, this.pageSize, this.categoryId).subscribe(
+      this.productService.getProductListByCategoryPaginate((this.pageNumber - 1), this.pageSize, this.categoryId).subscribe(
         data => {
           this.products = data._embedded.products;
           this.totalElements = data.page.totalElements;
         }
       )
     }else{
-      this.productService.getProductListPaginate(this.pageNumber, this.pageSize).subscribe(
+      this.productService.getProductListPaginate((this.pageNumber - 1), this.pageSize).subscribe(
         data => {
           this.products = data;
         }
@@ -74,7 +74,7 @@ export class ProductListComponent implements OnInit{
 
   updatePageSize(size: string){
       this.pageSize = +size;
-      this.pageNumber = 0;
+      this.pageNumber = 1;
       this.listProducts();
   }
 }

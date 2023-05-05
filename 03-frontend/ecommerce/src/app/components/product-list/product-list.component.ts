@@ -13,6 +13,10 @@ export class ProductListComponent implements OnInit{
   products: Product[] = [];
   categoryId!: number;
   productName!: string;
+
+  pageNumber:number = 1;
+  pageSize: number = 5;
+  totalElements: number = 0;
   
   constructor(private productService: ProductService, private route: ActivatedRoute){}
 
@@ -25,37 +29,52 @@ export class ProductListComponent implements OnInit{
 
   listProducts(){
 
-    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
-    const hasProductName: boolean = this.route.snapshot.paramMap.has('keyword');
+    const searchMode: boolean = this.route.snapshot.paramMap.has('keyword');
 
+
+    if(searchMode){
+     this.handleSearch();
+    }else{
+      this.handleList();
+    }
+  }
+
+  handleSearch(){
+    this.productName = this.route.snapshot.paramMap.get('keyword')!;
+
+    this.productService.getProductListByName(this.productName).subscribe(
+      data => {
+        this.products = data;
+      }
+    )
+  }
+
+  handleList(){
+    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
 
     if(hasCategoryId){
       this.categoryId = +this.route.snapshot.paramMap.get('id')!;
-    
-      this.productService.getProductListByCategory(this.categoryId).subscribe(
-        data => {
-          this.products = data;
-        }
-      )
-    }else if(hasProductName){
-      this.productName = this.route.snapshot.paramMap.get('keyword')!;
 
-      this.productService.getProductListByName(this.productName).subscribe(
+      console.log(this.categoryId);
+    
+      this.productService.getProductListByCategoryPaginate((this.pageNumber - 1), this.pageSize, this.categoryId).subscribe(
         data => {
-          this.products = data;
+          this.products = data._embedded.products;
+          this.totalElements = data.page.totalElements;
         }
       )
     }else{
-      this.categoryId = 1;
-
-      this.productService.getProductList().subscribe(
+      this.productService.getProductListPaginate((this.pageNumber - 1), this.pageSize).subscribe(
         data => {
           this.products = data;
         }
       )
     }
-
-    console.log(this.products);
   }
 
+  updatePageSize(size: string){
+      this.pageSize = +size;
+      this.pageNumber = 1;
+      this.listProducts();
+  }
 }

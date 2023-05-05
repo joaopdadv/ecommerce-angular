@@ -18,4 +18,18 @@
         <h2>Ops... Parece que houve um erro.</h2>
     </div>
 </div>
-<app-pagination></app-pagination>
+
+<ngb-pagination
+  [(page)]="pageNumber"
+  [pageSize]="pageSize"
+  [collectionSize]="totalElements"
+  [maxSize]="5"
+  [boundaryLinks]="false"
+  (pageChange)="listProducts()"></ngb-pagination>
+
+  <select #selectPageSize (change)="updatePageSize(selectPageSize.value)">
+    <option selected="true">5</option>
+    <option>10</option>
+    <option>15</option>
+    <option>20</option>
+  </select>

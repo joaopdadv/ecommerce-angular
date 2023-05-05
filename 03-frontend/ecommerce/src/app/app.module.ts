@@ -12,6 +12,7 @@ import { TopMenuComponent } from './components/top-menu/top-menu.component';
 import { ShopFilterComponent } from './components/shop-filter/shop-filter.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
   ],
   providers: [
     ProductService, 

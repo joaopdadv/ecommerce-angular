@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/common/product';
 import { ProductService } from 'src/app/service/product-service.service';
@@ -15,16 +15,20 @@ export class ProductListComponent implements OnInit{
   productName!: string;
 
   pageNumber:number = 1;
-  pageSize: number = 4;
+  pageSize: number = 8;
   totalElements: number = 0;
   
   constructor(private productService: ProductService, private route: ActivatedRoute){}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
+      this.pageNumber = 1;
       this.listProducts();
-    })
-    
+    }) 
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("init");
   }
 
   listProducts(){

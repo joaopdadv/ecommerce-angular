@@ -13,6 +13,7 @@ import { ShopFilterComponent } from './components/shop-filter/shop-filter.compon
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TopMenuComponent,
     ShopFilterComponent,
     ProductDetailComponent,
-    PaginationComponent
+    PaginationComponent,
+    CartStatusComponent
   ],
   imports: [
     BrowserModule,

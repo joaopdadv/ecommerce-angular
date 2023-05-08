@@ -7,7 +7,7 @@
                 <p *ngIf="produto.unitsInStock != 0">R$ {{produto.unitPrice}}</p>
                 <p *ngIf="produto.unitsInStock == 0">Fora de estoque</p>
                 <div class="buttons">
-                    <a href="" class="add" *ngIf="produto.unitsInStock != 0"><img src="../../assets/add.svg" alt=""></a>
+                    <a (click)="addToCart(produto)" class="add" *ngIf="produto.unitsInStock != 0"><img src="../../assets/add.svg" alt=""></a>
                     <a routerLink="/produto/{{produto.id}}" class="arrow"><img src="../../assets/arrow.svg" alt=""></a>
                 </div>
             </div>

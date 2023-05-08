@@ -1,6 +1,8 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CartItem } from 'src/app/common/cart-item';
 import { Product } from 'src/app/common/product';
+import { CartService } from 'src/app/service/cart.service';
 import { ProductService } from 'src/app/service/product-service.service';
 
 @Component({
@@ -18,7 +20,7 @@ export class ProductListComponent implements OnInit{
   pageSize: number = 8;
   totalElements: number = 0;
   
-  constructor(private productService: ProductService, private route: ActivatedRoute){}
+  constructor(private productService: ProductService, private cartService: CartService, private route: ActivatedRoute){}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
@@ -70,5 +72,12 @@ export class ProductListComponent implements OnInit{
       this.products = data._embedded.products;
       this.totalElements = data.page.totalElements;
     }
+  }
+
+  addToCart(product: Product){
+    console.log(product.name);
+
+    const cartItem = new CartItem(product);
+    this.cartService.addToCart(cartItem);
   }
 }

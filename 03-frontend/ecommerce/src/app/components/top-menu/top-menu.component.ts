@@ -28,7 +28,7 @@ import { trigger, transition, animate, keyframes, style } from '@angular/animati
 
 export class TopMenuComponent {
 
-  showSideMenu: boolean = false;
+  showSideMenu: boolean = true;
 
   toggleSideMenu(){
     this.showSideMenu = !this.showSideMenu;

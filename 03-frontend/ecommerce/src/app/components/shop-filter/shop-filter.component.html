@@ -1,11 +1,17 @@
 <div class="wrapper">
     <div class="filters">
-        <ul>
-            <li *ngFor="let category of categories"><a routerLink="/categoria/{{category.id}}" routerLinkActive="link-ativo">{{category.categoryName.toUpperCase()}}</a></li>
-        </ul>
+        <p>Filtros</p>
+        <img src="../../assets/arrow.svg" alt="" class="arrow" (click)="toggleDialog()" [ngClass]="{'rotate': showDialog}">
+        <div class="dialog" *ngIf="showDialog" [@valueChanged]="showDialog">
+            <ul>
+                <li *ngFor="let category of categories"><a routerLink="/categoria/{{category.id}}" routerLinkActive="link-ativo" (click)="toggleDialog()">{{category.categoryName.toUpperCase()}}</a></li>
+            </ul>
+        </div>
     </div>
     <div class="search">
             <img src="../../assets/search.svg" alt="" (click)="navigate()">
             <input type="text" placeholder="Pesquisar" name="pesquisa" #pesquisa>
     </div>
 </div>
+
+

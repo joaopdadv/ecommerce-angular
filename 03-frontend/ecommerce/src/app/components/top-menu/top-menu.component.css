@@ -110,8 +110,13 @@
 
 }
 
-.wrapper-mobile img{
+.wrapper-mobile > img{
     width: 50px;
+}
+
+.content img{
+    width: 35px;
+    margin-right: 10px;
 }
 
 .dark{

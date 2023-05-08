@@ -1,4 +1,4 @@
-.wrapper{
+.wrapper-desktop{
     width: 100%;
     background-color: var(--green);
 
@@ -10,7 +10,7 @@
     padding: 20px 10%;
 }
 
-.wrapper > *{
+.wrapper-desktop > *{
     width: 30%;
 }
 
@@ -31,6 +31,7 @@
 .menu > ul > li{
     display: inline-block;
     margin: 0 15px;
+    margin-bottom: 0 !important;
 }
 
 .menu > ul > li > a{
@@ -88,4 +89,98 @@
     color: var(--light);
     text-decoration: none;
     display: block;
+}
+
+/* ----- MOBILE ----- */
+
+.hidden{
+    display: none !important;
+}
+
+.wrapper-mobile{
+    display: none;
+
+    background-color: var(--green);
+
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 10%;
+
+}
+
+.wrapper-mobile img{
+    width: 50px;
+}
+
+.dark{
+    width: calc(100% - 300px);
+    height: 100svh;
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    background-color: rgba(0, 0, 0, 0.259);
+    z-index: 10;
+}
+
+.side-menu{
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100svh;
+    width: 300px;
+    background-color: var(--green);
+
+    z-index: 11;
+}
+
+.profile-mobile{
+    text-align: center;
+}
+
+.cart-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-flex > *{
+    margin: 15px 5px;
+}
+
+.profile-mobile > img{
+    width: 80px;
+    margin: 50px 0 0 0;
+}
+
+.entrar-btn-mobile{
+    color: white;
+    display: block;
+    width: max-content;
+    margin: 5px auto 10px auto;
+}
+
+.menu-mobile ul{
+    list-style: none;
+    padding: 20px 50px;
+}
+
+.menu-mobile ul li a{
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 1150px) {
+    .wrapper-desktop{
+        display: none;
+    }
+
+    .wrapper-mobile{
+        display: flex;
+    }
 }

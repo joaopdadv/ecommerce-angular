@@ -2,17 +2,17 @@
     <a routerLink="home">< VOLTAR</a>
     <div class="content">
         <div class="image">
-            <img src={{produto.imageUrl}} alt="">
+            <img src={{product.imageUrl}} alt="">
         </div>
         <div class="texts">
             <div class="top">
-                <h2 class="name">{{produto.name}}</h2>
-                <p class="descricao">{{produto.description}}</p>
-                <h3 class="price">R$ <span>{{produto.unitPrice}}</span></h3>
+                <h2 class="name">{{product.name}}</h2>
+                <p class="descricao">{{product.description}}</p>
+                <h3 class="price">R$ <span>{{product.unitPrice}}</span></h3>
             </div>
             <div class="bottom">
                 <div class="add-cart">
-                    <div class="button">+</div>
+                    <div class="button" (click)="addToCart()">+</div>
                     <p>Adicionar ao carrinho</p>
                 </div>
             </div>

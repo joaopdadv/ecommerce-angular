@@ -48,6 +48,7 @@ export class CartService {
       totalQuantityValue += cartItem.quantity;
     }
 
+    //next atualiza o valor da variavel Subject
     this.totalPrice.next(totalPriceValue);
     this.totalQuantity.next(totalQuantityValue);
 

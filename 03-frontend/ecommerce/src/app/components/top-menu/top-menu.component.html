@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper-desktop">
     <div class="logo">
         <h2 class="logo-text">
             SATUS<span class="shop-text">SHOP</span>
@@ -16,5 +16,37 @@
         <img src="../../assets/profile.svg" alt="profile">
         <img src="../../assets/cart.svg" alt="cart">
         <app-cart-status></app-cart-status>
+    </div>
+</div>
+
+<div class="wrapper-mobile">
+    <h2 class="logo-text">
+        SATUS<span class="shop-text">SHOP</span>
+    </h2>
+    <img src="../../assets/menu.svg" alt="" (click)="toggleSideMenu()" >
+</div>
+
+<div class="content" [ngClass]="{'hidden': showSideMenu}" [@valueChanged]="showSideMenu">
+    <div class="dark" (click)="toggleSideMenu()"></div>
+    <div class="side-menu">
+
+        <div class="profile-mobile">
+            <img src="../../assets/profile.svg" alt="profile">
+            <a href="#" class="entrar-btn-mobile">Entrar</a>
+
+            <div class="cart-flex">
+                <img src="../../assets/cart.svg" alt="cart">
+                <app-cart-status></app-cart-status>
+            </div>
+        </div>
+
+        <div class="menu-mobile">
+            <ul>
+                <li><a routerLink="home">Loja</a></li>
+                <li><a routerLink="faq">FAQ</a></li>
+                <li><a routerLink="contato">Contato</a></li>
+            </ul>
+        </div>
+
     </div>
 </div>

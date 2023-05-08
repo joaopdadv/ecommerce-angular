@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
@@ -31,6 +32,7 @@ import { CartStatusComponent } from './components/cart-status/cart-status.compon
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [
     ProductService, 

@@ -14,7 +14,7 @@
     <div class="profile">
         <a href="#" class="entrar-btn">Entrar</a>
         <img src="../../assets/profile.svg" alt="profile">
-        <img src="../../assets/cart.svg" alt="cart">
+        <a routerLink="carrinho"><img src="../../assets/cart.svg" alt="cart"></a>
         <app-cart-status></app-cart-status>
     </div>
 </div>
@@ -35,7 +35,7 @@
             <a href="#" class="entrar-btn-mobile">Entrar</a>
 
             <div class="cart-flex">
-                <img src="../../assets/cart.svg" alt="cart">
+                <a routerLink="carrinho" (click)="toggleSideMenu()"><img src="../../assets/cart.svg" alt="cart"></a>
                 <app-cart-status></app-cart-status>
             </div>
         </div>

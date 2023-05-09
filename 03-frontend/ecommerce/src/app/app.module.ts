@@ -15,6 +15,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { CartListComponent } from './components/cart-list/cart-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CartStatusComponent } from './components/cart-status/cart-status.compon
     ShopFilterComponent,
     ProductDetailComponent,
     PaginationComponent,
-    CartStatusComponent
+    CartStatusComponent,
+    CartListComponent
   ],
   imports: [
     BrowserModule,
